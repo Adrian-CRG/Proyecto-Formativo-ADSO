@@ -1,13 +1,10 @@
 from flask import Flask
 from flask_mysqldb import MySQL
-# pyrefly: ignore [missing-import]
-from config import Config
+from Config import Config
 
 from Routes.UserRoutes import us_bp
 from Routes.AdminRoutes import adm_bp
 from Routes.ClienteRoutes import cli_bp
-
-
 from Routes.CategoriaRoutes import cat_bp
 from Routes.CompraRoutes import comp_bp
 from Routes.CorreoRoutes import cor_bp
@@ -23,7 +20,6 @@ from Routes.ProductoInsumoRoutes import proins_bp
 from Routes.DetalleCompraRoutes import detcom_bp
 from Routes.DetalleInsumoRoutes import detins_bp
 from Routes.HistorialConsumoRoutes import hiscon_bp
-
 from documentacion import documentacion_bp
 
 
