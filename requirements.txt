@@ -6,4 +6,6 @@ flask-cors
 
 flask-mysqldb
 python-dotenv 
-flask-cors
+# flask-cors
+  gunicorn
+# mysqlclient
