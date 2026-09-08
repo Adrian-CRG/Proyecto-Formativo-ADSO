@@ -60,4 +60,4 @@ app.register_blueprint(documentacion_bp, url_prefix='/docs')
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # app.run(debug=True)
