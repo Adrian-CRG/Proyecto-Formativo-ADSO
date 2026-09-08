@@ -6,7 +6,7 @@ import uuid
 class ProductoService:
 
     def listar():
-        sql = "SELECT * FROM T_PRODUCTO"
+        sql = "SELECT * FROM t_producto"
         c = current_app.mysql.connection.cursor()
         c.execute(sql)
         data = c.fetchall()
