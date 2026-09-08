@@ -27,7 +27,7 @@ class ProductoService:
         pro_uuid = str(uuid.uuid4())
         sql = """
             INSERT INTO T_PRODUCTO
-            (PRO_UUID, PRO_CODIGO, PRO_TALLA, PRO_COLOR, PRO_RESEÑA,
+            (PRO_UUID, PRO_CODIGO, PRO_TALLA, PRO_COLOR, PRO_RESENA,
              PRO_DESCRIPCION, PRO_PRECIO, PRO_CALIFICACION, PRO_IMAGEN, PRO_CANTIDAD)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         """
