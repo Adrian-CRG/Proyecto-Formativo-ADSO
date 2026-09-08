@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_mysqldb import MySQL
-from Config import Config
+from flask_cors import CORS
+from config import Config
 
 from Routes.UserRoutes import us_bp
 from Routes.AdminRoutes import adm_bp
@@ -25,6 +26,8 @@ from documentacion import documentacion_bp
 
 
 app = Flask(__name__)
+
+CORS(app)
 
 app.config.from_object(Config)
 
