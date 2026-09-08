@@ -24,6 +24,6 @@ class Producto:
             "descripcion"   : self.PRO_DESCRIPCION,
             "precio"        : self.PRO_PRECIO,
             "calificacion"  : self.PRO_CALIFICACION,
-            "imagen"        : "",
+            "imagen"        : self.PRO_IMAGEN,
             "cantidad"      : self.PRO_CANTIDAD
         }
