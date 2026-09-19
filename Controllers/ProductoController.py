@@ -291,23 +291,30 @@ class ProductoController:
 
     @staticmethod
     def vista_listar():
-        productos = ProductoService.obtener_todos()
+        productos = ProductoService.listar()
         return render_template("productos/lista.html", productos=productos)
 
     @staticmethod
     def vista_form():
         return render_template("productos/insertar.html")
 
-    @staticmethod
-    def vista_crear():
-        datos = {
-            "codigo": request.form.get("codigo"),
-            "nombre": request.form.get("nombre"),
-            "precio": request.form.get("precio", type=float),
-            "stock": request.form.get("stock", type=int),
-        }
+        @staticmethod
+        def vista_crear():
+            codigo = request.form.get("codigo")
+            talla = request.form.get("talla")
+            color = request.form.get("color")
+            resena = request.form.get("resena")
+            descripcion = request.form.get("descripcion")
+            precio = request.form.get("precio", type=float)
+            calificacion = request.form.get("calificacion", type=float)
+            imagen = request.form.get("imagen")
+            cantidad = request.form.get("cantidad", type=int)
+
         try:
-            ProductoService.crear(datos)
+            ProductoService.crear(
+                codigo, talla, color, resena, descripcion,
+                precio, calificacion, imagen, cantidad
+            )
             flash("Producto guardado correctamente.", "success")
         except Exception as e:
             flash(f"No se pudo guardar el producto: {e}", "error")
@@ -316,6 +323,5 @@ class ProductoController:
         return render_template(
             "exito.html",
             titulo="Producto registrado",
-            mensaje=f"El producto '{datos['nombre']}' se guardó correctamente.",
-        )    
-    
+            mensaje=f"El producto '{codigo}' se guardó correctamente.",
+        )

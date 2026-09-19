@@ -1,0 +1,28 @@
+<table class="tabla">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Descripción</th>
+      <th>Talla</th>
+      <th>Color</th>
+      <th>Precio</th>
+      <th>Cantidad</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for producto in productos %}
+      <tr>
+        <td>{{ producto.codigo }}</td>
+        <td>{{ producto.descripcion }}</td>
+        <td>{{ producto.talla }}</td>
+        <td>{{ producto.color }}</td>
+        <td>${{ "%.2f"|format(producto.precio) }}</td>
+        <td>{{ producto.cantidad }}</td>
+      </tr>
+    {% else %}
+      <tr>
+        <td colspan="6">No hay productos registrados todavía.</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
