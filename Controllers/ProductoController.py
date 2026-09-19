@@ -289,6 +289,8 @@ class ProductoController:
             "mensaje": "Cantidad actualizada correctamente"
         }), 200
 
+    # ---------- VISTA HTML ----------
+
     @staticmethod
     def vista_listar():
         productos = ProductoService.listar()
@@ -298,17 +300,17 @@ class ProductoController:
     def vista_form():
         return render_template("productos/insertar.html")
 
-        @staticmethod
-        def vista_crear():
-            codigo = request.form.get("codigo")
-            talla = request.form.get("talla")
-            color = request.form.get("color")
-            resena = request.form.get("resena")
-            descripcion = request.form.get("descripcion")
-            precio = request.form.get("precio", type=float)
-            calificacion = request.form.get("calificacion", type=float)
-            imagen = request.form.get("imagen")
-            cantidad = request.form.get("cantidad", type=int)
+    @staticmethod
+    def vista_crear():
+        codigo = request.form.get("codigo")
+        talla = request.form.get("talla")
+        color = request.form.get("color")
+        resena = request.form.get("resena")
+        descripcion = request.form.get("descripcion")
+        precio = request.form.get("precio", type=float)
+        calificacion = request.form.get("calificacion", type=float)
+        imagen = request.form.get("imagen")
+        cantidad = request.form.get("cantidad", type=int)
 
         try:
             ProductoService.crear(
