@@ -59,5 +59,5 @@ app.register_blueprint(hiscon_bp, url_prefix='/historiales-consumo')
 app.register_blueprint(documentacion_bp, url_prefix='/docs')
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+    # app.run(debug=True)
