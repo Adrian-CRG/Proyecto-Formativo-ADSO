@@ -1,4 +1,4 @@
-from flask import jsonify, request
+from flask import request, jsonify, render_template, redirect, url_for, flash
 from Services.ProductoService import ProductoService
 
 
@@ -288,3 +288,34 @@ class ProductoController:
         return jsonify({
             "mensaje": "Cantidad actualizada correctamente"
         }), 200
+
+    @staticmethod
+    def vista_listar():
+        productos = ProductoService.obtener_todos()
+        return render_template("productos/lista.html", productos=productos)
+
+    @staticmethod
+    def vista_form():
+        return render_template("productos/insertar.html")
+
+    @staticmethod
+    def vista_crear():
+        datos = {
+            "codigo": request.form.get("codigo"),
+            "nombre": request.form.get("nombre"),
+            "precio": request.form.get("precio", type=float),
+            "stock": request.form.get("stock", type=int),
+        }
+        try:
+            ProductoService.crear(datos)
+            flash("Producto guardado correctamente.", "success")
+        except Exception as e:
+            flash(f"No se pudo guardar el producto: {e}", "error")
+            return redirect(url_for("producto_bp.vista_form"))
+
+        return render_template(
+            "exito.html",
+            titulo="Producto registrado",
+            mensaje=f"El producto '{datos['nombre']}' se guardó correctamente.",
+        )    
+    

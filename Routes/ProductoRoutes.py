@@ -1,7 +1,7 @@
 from flask import Blueprint
 from Controllers.ProductoController import ProductoController
 
-pro_bp = Blueprint('producto_bp', __name__)
+pro_bp = Blueprint("producto_bp", __name__, url_prefix="/productos")
 
 
 # Listar todos los productos
@@ -38,3 +38,13 @@ def buscarProductoPorCodigo(codigo):
 @pro_bp.route('/cantidad', methods=['PUT'])
 def actualizarCantidadProducto():
     return ProductoController.actualizarCantidad()
+
+pro_bp.add_url_rule(
+    "/vista", view_func=ProductoController.vista_listar, methods=["GET"]
+)
+pro_bp.add_url_rule(
+    "/vista/nuevo", view_func=ProductoController.vista_form, methods=["GET"]
+)
+pro_bp.add_url_rule(
+    "/vista/nuevo", view_func=ProductoController.vista_crear, methods=["POST"]
+)
