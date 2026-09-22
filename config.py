@@ -11,3 +11,4 @@ class Config:
     MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD", "")
     MYSQL_DB = os.getenv("MYSQL_DATABASE", "damili")
     MYSQL_SSL = {"ca": "etc/secrets/ca.pem"}
+    SECRET_KEY = os.getenv("SECRET_KEY", "clave-temporal-dev")
