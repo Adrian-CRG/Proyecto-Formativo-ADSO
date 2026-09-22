@@ -3,36 +3,64 @@
 {% block titulo %}Nuevo producto{% endblock %}
 
 {% block contenido %}
-  <h1>Registrar producto</h1>
+  <div class="card">
+    <h1>Registrar producto</h1>
 
-  <form method="POST" action="{{ url_for('producto_bp.vista_crear') }}" class="form">
-    <label for="codigo">Código</label>
-    <input type="text" id="codigo" name="codigo" required>
+    <form method="POST" action="{{ url_for('producto_bp.vista_crear') }}">
+      <!-- Grid para agrupar campos en dos columnas -->
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="codigo">Código</label>
+          <input type="text" id="codigo" name="codigo" required placeholder="Ej: PROD-001">
+        </div>
 
-    <label for="talla">Talla</label>
-    <input type="text" id="talla" name="talla" required>
+        <div class="form-group">
+          <label for="precio">Precio</label>
+          <input type="number" id="precio" name="precio" step="0.01" min="0" required placeholder="0.00">
+        </div>
 
-    <label for="color">Color</label>
-    <input type="text" id="color" name="color" required>
+        <div class="form-group">
+          <label for="cantidad">Cantidad</label>
+          <input type="number" id="cantidad" name="cantidad" min="0" required placeholder="0">
+        </div>
 
-    <label for="descripcion">Descripción</label>
-    <input type="text" id="descripcion" name="descripcion" required>
+        <div class="form-group">
+          <label for="talla">Talla</label>
+          <input type="text" id="talla" name="talla" required placeholder="Ej: M, L, XL">
+        </div>
 
-    <label for="resena">Reseña</label>
-    <input type="text" id="resena" name="resena">
+        <div class="form-group">
+          <label for="color">Color</label>
+          <input type="text" id="color" name="color" required placeholder="Ej: Rojo">
+        </div>
 
-    <label for="precio">Precio</label>
-    <input type="number" id="precio" name="precio" step="0.01" min="0" required>
+        <div class="form-group">
+          <label for="descripcion">Descripción</label>
+          <input type="text" id="descripcion" name="descripcion" required placeholder="Descripción breve del producto">
+        </div>
 
-    <label for="calificacion">Calificación</label>
-    <input type="number" id="calificacion" name="calificacion" step="0.1" min="0" max="5">
+        <div class="form-group">
+          <label for="calificacion">Calificación</label>
+          <input type="number" id="calificacion" name="calificacion" step="0.1" min="0" max="5" placeholder="0.0 - 5.0">
+        </div>
 
-    <label for="imagen">URL de imagen</label>
-    <input type="text" id="imagen" name="imagen">
+        <div class="form-group">
+          <label for="resena">Reseña</label>
+          <input type="text" id="resena" name="resena" placeholder="Reseña opcional">
+        </div>
 
-    <label for="cantidad">Cantidad</label>
-    <input type="number" id="cantidad" name="cantidad" min="0" required>
+        <!-- Ocupa ambas columnas -->
+        <div class="form-group" style="grid-column: 1 / -1;">
+          <label for="imagen">URL de imagen</label>
+          <input type="url" id="imagen" name="imagen" placeholder="https://...">
+        </div>
+      </div>
 
-    <button type="submit" class="btn">Guardar</button>
-  </form>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Guardar Producto</button>
+        <!-- Botón para cancelar / volver al listado -->
+        <a href="{{ url_for('producto_bp.vista_listar') }}" class="btn btn-secondary">Cancelar</a>
+      </div>
+    </form>
+  </div>
 {% endblock %}

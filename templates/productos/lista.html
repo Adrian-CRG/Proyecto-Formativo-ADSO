@@ -1,28 +1,44 @@
-<table class="tabla">
-  <thead>
-    <tr>
-      <th>Código</th>
-      <th>Descripción</th>
-      <th>Talla</th>
-      <th>Color</th>
-      <th>Precio</th>
-      <th>Cantidad</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for producto in productos %}
-      <tr>
-        <td>{{ producto.codigo }}</td>
-        <td>{{ producto.descripcion }}</td>
-        <td>{{ producto.talla }}</td>
-        <td>{{ producto.color }}</td>
-        <td>${{ "%.2f"|format(producto.precio) }}</td>
-        <td>{{ producto.cantidad }}</td>
-      </tr>
-    {% else %}
-      <tr>
-        <td colspan="6">No hay productos registrados todavía.</td>
-      </tr>
-    {% endfor %}
-  </tbody>
-</table>
+{% extends "layout.html" %}
+
+{% block titulo %}Listado de productos{% endblock %}
+
+{% block contenido %}
+  <div class="card">
+    <h1>Productos Registrados</h1>
+    
+    <div class="table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Descripción</th>
+            <th>Talla</th>
+            <th>Color</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for producto in productos %}
+            <tr>
+              <td><strong>{{ producto.codigo }}</strong></td>
+              <td>{{ producto.descripcion }}</td>
+              <td>{{ producto.talla }}</td>
+              <td>{{ producto.color }}</td>
+              <td>${{ "%.2f"|format(producto.precio) }}</td>
+              <td>
+                <span class="badge">{{ producto.cantidad }}</span>
+              </td>
+            </tr>
+          {% else %}
+            <tr>
+              <td colspan="6" style="text-align: center; color: var(--text-muted); padding: 30px;">
+                No hay productos registrados todavía.
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

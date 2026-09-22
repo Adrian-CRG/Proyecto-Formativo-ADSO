@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block titulo %}{{ titulo }}{% endblock %}
+
+{% block contenido %}
+  <div class="card" style="text-align: center; max-width: 500px; margin: 0 auto; margin-top: 50px;">
+    <!-- Ícono de éxito -->
+    <div style="font-size: 3.5rem; color: #10B981; margin-bottom: 20px;">✓</div>
+    
+    <h1>{{ titulo }}</h1>
+    <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 1.1rem;">{{ mensaje }}</p>
+    
+    <div class="form-actions" style="justify-content: center; margin-top: 0;">
+      <a href="{{ url_for('producto_bp.vista_listar') }}" class="btn btn-primary">Ir al Listado</a>
+      <a href="{{ url_for('producto_bp.vista_form') }}" class="btn btn-secondary">Registrar Otro</a>
+    </div>
+  </div>
+{% endblock %}

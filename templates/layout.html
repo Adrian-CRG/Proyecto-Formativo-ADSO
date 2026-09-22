@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Admin Panel{% endblock %}</title>
+    <!-- Fuente Inter de Google Fonts para un diseño moderno -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Archivo CSS principal -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style') }}">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Barra lateral (Sidebar) -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                AdminPanel
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('producto_bp.vista_listar') }}">Listar Productos</a></li>
+                    <li><a href="{{ url_for('producto_bp.vista_form') }}">Registrar Producto</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="main-content">
+            <!-- Mensajes flash de Flask (alertas de éxito o error) -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                <div class="flash-messages">
+                  {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endwith %}
+
+            {% block contenido %}
+            {% endblock %}
+        </main>
+    </div>
+</body>
+</html>
